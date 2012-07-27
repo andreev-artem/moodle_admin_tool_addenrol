@@ -1,0 +1,21 @@
+.path-admin-report-addenrol .selectcourses td {
+    border: none;
+}
+
+.path-admin-report-addenrol #buttonscell #addcontrols {
+    height: 13em;
+    margin-top: 3em;
+}
+
+.path-admin-report-addenrol .selectcourses #existingcell,
+.path-admin-report-addenrol .selectcourses #potentialcell {
+    width: 40%;
+}
+
+.path-admin-report-addenrol #buttonscell {
+    text-align: center;
+}
+
+.path-admin-report-addenrol .selectcourses select {
+    width: 100%;
+}
