@@ -1,6 +1,7 @@
-<?PHP
+<?php
 
-$plugin->version  = 2011082500;
-$plugin->requires = 2010090501;
+defined('MOODLE_INTERNAL') || die();
 
-?>
+$plugin->version   = 2012072700;
+$plugin->requires  = 2012061700;
+$plugin->component = 'tool_addenrol';

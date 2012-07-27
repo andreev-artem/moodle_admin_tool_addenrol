@@ -1,3 +1,3 @@
 <?php
-$ADMIN->add('accounts', new admin_externalpage('reportaddenrol', get_string('title', 'report_addenrol'), "$CFG->wwwroot/$CFG->admin/report/addenrol/index.php", 'report/addenrol:view'));
+$ADMIN->add('accounts', new admin_externalpage('tooladdenrol', get_string('title', 'tool_addenrol'), "$CFG->wwwroot/$CFG->admin/tool/addenrol/index.php", 'tool/addenrol:view'));
 ?>

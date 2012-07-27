@@ -28,10 +28,10 @@ $listremove     = optional_param('remove', 0, PARAM_BOOL);
 $removeall      = optional_param('removeall', 0, PARAM_BOOL);
 $hidden         = optional_param('hidden', 0, PARAM_BOOL);
 
-admin_externalpage_setup('reportaddenrol');
+admin_externalpage_setup('tooladdenrol');
 
-$return = $CFG->wwwroot . '/' . $CFG->admin . '/report/addenrol/index.php';
-$pluginname = 'report_addenrol';
+$return = $CFG->wwwroot . '/' . $CFG->admin . '/tool/addenrol/index.php';
+$pluginname = 'tool_addenrol';
 
 if ($showall) {
     $searchtext = '';

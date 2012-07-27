@@ -3,7 +3,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
-    'report/addenrol:view' => array(
+    'tool/addenrol:view' => array(
         'riskbitmask' => RISK_PERSONAL,
         'captype' => 'read',
         'contextlevel' => CONTEXT_SYSTEM,
