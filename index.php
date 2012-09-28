@@ -20,7 +20,7 @@ $accept         = optional_param('accept', 0, PARAM_BOOL);
 $confirm        = optional_param('confirm', 0, PARAM_BOOL);
 $cancel         = optional_param('cancel', 0, PARAM_BOOL);
 $searchtext     = optional_param('searchtext', '', PARAM_RAW);
-$groups         = optional_param('groups', '', PARAM_CLEAN);
+$groups         = optional_param('groups', array(), PARAM_CLEAN);
 $roleassign     = optional_param('roleassign', '', PARAM_RAW);
 $showall        = optional_param('showall', 0, PARAM_BOOL);
 $listadd        = optional_param('add', 0, PARAM_BOOL);
@@ -66,12 +66,11 @@ if ($accept) {
     }
 
     // create user
-    $user = new object();
+    $user = new stdClass();
     $user->mnethostid = $CFG->mnet_localhost_id;
-    $user->username = $username;
-    
-    $user->username = $username;
-    $user->password = hash_internal_user_password($password);
+
+    $user->username = trim($username);
+    $user->password = hash_internal_user_password(trim($password));
     $user->firstname = $firstname;
     $user->lastname = $lastname;
     $user->email = $email;
@@ -98,7 +97,7 @@ if ($accept) {
     }
 
     // make sure user context exists
-    get_context_instance(CONTEXT_USER, $user->id);
+    CONTEXT_USER::instance($user->id);
 
     // create helper for logging
     $courseslist = get_courses("all", 'c.sortorder ASC', 'c.id, c.fullname');
@@ -275,9 +274,12 @@ echo $OUTPUT->header();
                 <td>
                     <input type="text" id="id_username" name="username" size="20"
                            onchange="
+                               var username_input = document.getElementById('id_username');
+                               // trim
+                               username_input.value = username_input.value.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
                                var email_input = document.getElementById('id_email');
                                if (email_input.value == '') {
-                                   email_input.value = 'tmp'+document.getElementById('id_username').value+'<?php echo FAKE_DOMAIN ?>';
+                                   email_input.value = 'tmp'+username_input.value+'<?php echo FAKE_DOMAIN ?>';
                                }
                            " <?php if ($username !== '') echo 'value="' . $username . '"'?>
                            />
